@@ -4,7 +4,9 @@
 本软件是一款强大的所见即所得前端页面设计器，是低代码开发领域的基础建设，生成的代码不依赖于任何框架，实测可以将前端布局工作的耗时减少80%以上，最关键的是，它实现了人人都可以写前端页面的梦想。  
 不用写一行代码即可让设计师、前端开发人员轻松设计出前端代码的利器，100%还原设计稿不再是梦。对于Uniapp开发非常友好，可以快速生成组件和页面。  
 本软件可以生成HTML5代码、按2x生成手机端VUE代码、按1x生成电脑端VUE代码，也可以直接生成JSON串，供其他开发工具（包括自主研发的）进行二次加工。  
-本软件采用Apache 2.0协议开源，可以免费商用。如有任何问题欢迎反馈，让我们共同建设好该开源项目。突出代码贡献者将会把名字写入README.md中，欢迎贡献。
+本软件采用Apache 2.0协议开源，可以免费商用。如有任何问题欢迎反馈，让我们共同建设好该开源项目。突出代码贡献者将会把名字写入README.md中，欢迎贡献。  
+
+
 This software is a powerful WYSIWYG front-end page designer, which is the basic construction in the field of low code development. The generated code does not depend on any framework. The actual measurement can reduce the time consumption of front-end layout work by more than 80%. The most important thing is that it realizes the dream that everyone can write front-end pages.
 Designers and front-end developers can easily design front-end code without writing a line of code. It is no longer a dream to 100% restore the design draft. It is very friendly to uniapp development and can generate components and pages quickly.
 This software can generate HTML5 code, generate mobile phone Vue code by 2x, generate computer Vue code by 1X, or directly generate JSON string for secondary processing by other development tools (including self-developed).
