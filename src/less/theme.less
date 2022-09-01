@@ -1,0 +1,311 @@
+@ThemeColor: #8a97b6;
+
+html,
+body {
+	color: lighten(@ThemeColor, 5);
+}
+body{
+}
+
+.gen-dark(10);
+.gen-dark(@n, @i: 1) when (@i =< @n) {
+	.dark-@{i} {
+		background-color: fade(darken(@ThemeColor, @i*10),70%);
+		background-image: unset;
+		color: #ffffff;
+	}
+	.gen-dark(@n, (@i + 1));
+}
+
+.gen-light(10);
+.gen-light(@n, @i: 1) when (@i =< @n) {
+	.light-@{i} {
+		background-color: fade(lighten(@ThemeColor, @i*10),70%);
+		background-image: unset;
+	}
+	.gen-light(@n, (@i + 1));
+}
+
+.clickable {
+	user-select: none;
+	background-color: fade(darken(@ThemeColor, 20%),80%);
+	color: #ffffff;
+	&:hover {
+		background-color: fade(darken(@ThemeColor, 15%),80%);
+	}
+	&:active {
+		background-color: darken(@ThemeColor, 5%);
+	}
+}
+
+/**
+ * 输入组件
+ */
+input[type='text'],
+input[type='password'],
+input[type='checkbox'],
+input[type='number'],
+select{
+	padding: 5px;
+	outline: none;
+	// border-radius: 10px;
+	border: lighten(@ThemeColor, 25) 1px solid;
+	box-shadow: lighten(@ThemeColor, 30) 0px 0px 5px;
+	font-size: 12px;
+	line-height: 21px;
+	color: @ThemeColor;
+	background-image: linear-gradient(lighten(@ThemeColor, 50), lighten(@ThemeColor, 37));
+	// &:read-only {
+	// 	box-shadow: none;
+	// 	background-image: none;
+	// 	background-color: transparent;
+	// 	cursor: not-allowed;
+	// 	&:focus {
+	// 		background-image: none;
+	// 	}
+	// }
+	&:focus {
+		background-image: linear-gradient(#ffffc1, #ffffc1);
+	}
+	&::placeholder{
+		color: lighten(@ThemeColor,20%);
+		text-align: center;
+	}
+	&:-moz-placeholder{
+		color: lighten(@ThemeColor,20%);
+		text-align: center;
+	}
+	&:-ms-input-placeholder{
+		color: lighten(@ThemeColor,20%);
+		text-align: center;
+	}
+	&::-ms-clear, &::-ms-reveal{display: none;}
+}
+/*lable标签的大小、位置、背景颜色更改，在css选择时，“+”代表相邻元素，即当前元素的下一元素*/
+input[type='checkbox']::after {
+	display: block;
+	width: 20px;
+	height: 20px;
+	cursor: pointer;
+	position: absolute;
+	top: 2px;
+	left: 15px;
+	background: rgba(240, 84, 77, 1);
+}
+
+/*当input框为选中状态时，lable标签的样式，其中在css选择时，“：”表示当前input框的值，即checked；
+      该部分主要对显示的“对号”的大限居中方式，显示颜色进行了设置*/
+input[type='checkbox'] {
+	display: none;
+}
+
+input[type='checkbox'] + label {
+	display: inline-block;
+	width: 15px;
+	height: 15px;
+	border: lighten(@ThemeColor, 20%) 2px solid;
+	border-radius: 5px;
+	background: #fff;
+	margin-right: 0.625rem;
+	vertical-align: middle;
+}
+
+input[type='checkbox']:checked + label {
+	position: relative;
+	border: lighten(@ThemeColor, 20%) 2px solid;
+	border-radius: 5px;
+	background: @ThemeColor;
+	top: -0.0625rem;
+}
+
+input[type='checkbox']:checked + label::before {
+	content: '';
+	position: absolute;
+	width: 0.25rem;
+	height: 0.5rem;
+	color: black;
+	border-bottom: 0.125rem solid #fff;
+	border-right: 0.125rem solid #fff;
+	left: 50%;
+	top: 22%;
+	transform-origin: center;
+	transform: translate(-50%, -30%) rotate(40deg);
+	-webkit-transform: translate(-50%, -30%) rotate(40deg);
+}
+
+input[type='checkbox']:disabled + label{
+	filter: grayscale(100%);
+	opacity: 0.7;
+}
+
+input[type='submit'],
+button {
+	padding: 5px;
+	outline: none;
+	border-radius: 5px;
+	border: #cae1ff 1px solid;
+	box-shadow: lighten(@ThemeColor, 30) 0px 0px 5px;
+	font-size: 12px;
+	line-height: 15px;
+	color: #ffffff;
+	background-image: linear-gradient(lighten(@ThemeColor, 5), darken(@ThemeColor, 5));
+	&:hover {
+		background-image: linear-gradient(lighten(@ThemeColor, 10), @ThemeColor);
+	}
+	&:active {
+		background-image: linear-gradient(@ThemeColor, lighten(@ThemeColor, 10));
+		box-shadow: none;
+	}
+	&:disabled {
+		background-image: linear-gradient(lighten(@ThemeColor, 40), lighten(@ThemeColor, 30));
+		color: lighten(@ThemeColor, 10);
+		cursor: not-allowed;
+	}
+	&.white {
+		background-image: none;
+		border: none;
+		box-shadow: none;
+		background-color: unset;
+		color: @ThemeColor;
+	}
+}
+input.little {
+	line-height: 25px;
+	height: 25px;
+	padding: 2px;
+	padding-left: 5px;
+	padding-right: 5px;
+	border-radius: 5px;
+	font-size: 12px;
+}
+input.big {
+	padding: 5px;
+	border-radius: 5px;
+	font-size: 12px;
+}
+@media (max-width: 600px) {
+	input.little,
+	button {
+		padding: 5px;
+		border-radius: 5px;
+		font-size: 12px;
+	}
+}
+
+/**
+ * 表格
+ */
+table {
+	width: 100%;
+	border-spacing: 0;
+	border-collapse: collapse;
+	font-size: 12px;
+	thead {
+		background-image: linear-gradient(lighten(@ThemeColor, 10%), @ThemeColor);
+		color: #ffffff;
+	}
+	tbody {
+		tr:nth-child(even){
+			background-color: lighten(@ThemeColor, 32%);
+		}
+		tr:nth-child(odd) {
+			background-color: #ffffff;
+		}
+		tr:hover{
+			background-color: lighten(@ThemeColor, 20%);
+			color:#ffffff;
+		}
+	}
+	tfoot {
+		background-image: linear-gradient(spin(@ThemeColor, -5), spin(darken(@ThemeColor, 10%), 5));
+		color: #ffffff;
+	}
+	th,
+	td {
+		padding: 4px;
+		border: lighten(@ThemeColor, 35%) 1px solid;
+		text-align: left;
+		vertical-align: top;
+	}
+}
+
+/**
+ * TAB页签
+ */
+.tab-label {
+	background-image: linear-gradient(darken(@ThemeColor, 0%),darken(@ThemeColor, 15%));
+	padding: 8px;
+	color: #ffffff;
+	margin-right: 1px;
+	user-select: none;
+	border-radius: 5px 5px 0px 0px;
+	&:active {
+		opacity: 0.5;
+	}
+}
+.tab-label-seleted {
+	background-image: linear-gradient(#ffffff,#ffffff);
+	border: lighten(@ThemeColor, 30%) 1px solid;
+	border-bottom: none;
+	color: darken(@ThemeColor, 15%);
+	font-weight: bold;
+	user-select: none;
+}
+.row-selected {
+	background-color: lighten(@ThemeColor, 20%) !important;
+	color:#ffffff;
+}
+.init-selected{
+	background-color: @ThemeColor !important;
+	color:#ffffff;
+}
+
+/**
+ * ElementUI自定义
+ */
+.el-picker-panel__shortcut{
+	background-image: none;
+	&:hover{
+		background-image: none;
+	}
+}
+.el-time-panel__btn{
+	background-image: none;
+	&:hover{
+		background-image: none;
+	}
+}
+.el-select{
+	width: 100%;
+}
+.el-color-picker{
+	background-color: white;
+	box-shadow: #cccccc 0px 0px 5px;
+}
+.el-input.is-disabled .el-input__inner{
+	color: #66624d;
+	cursor: default !important;
+}
+.el-input.is-disabled .el-input__icon{
+	cursor: default !important;
+}
+.el-upload-list--picture-card .el-upload-list__item{
+	height: unset;
+	margin: 0;
+}
+.el-upload--picture-card{
+	position: relative;
+	height: 40px;
+	// width: 38px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.el-upload-list--picture-card .el-upload-list__item{
+	width: 100px !important;
+	line-height: 0px !important;
+	// max-height: 50px !important;
+}
+.el-upload-list__item.is-success .el-upload-list__item-status-label{
+	display: none;
+}

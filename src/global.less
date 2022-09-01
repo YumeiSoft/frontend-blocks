@@ -1,0 +1,176 @@
+@import './less/theme.less';
+@import './less/layout.less';
+@import './less/animation.less';
+html,
+body {
+	height: 100%;
+	width: 100%;
+	padding: 0px;
+	margin: 0px;
+	display: flex;
+	font-size: 14px;
+	font-family: 'Arial','Microsoft YaHei', '微软雅黑', 'Microsoft JhengHei', '华文细黑', 'STHeiti', 'MingLiu';
+}
+a {
+	text-decoration: none;
+}
+/**
+ * 布局方式
+ */
+.rel{
+	position: relative;
+}
+.abs{
+	position: absolute;
+}
+/**
+ * 预设宽度
+ */
+.gen-w(960);
+.gen-w(@n, @i: 0) when (@i =< @n) {
+  .w@{i} {
+	  width: @i + 0px;
+	  flex-shrink: 0;
+  }
+  .gen-w(@n, (@i + 5));
+}
+.wfull {
+	width: 100%;
+}
+/**
+ * 预设高度
+ */
+.gen-h(960);
+.gen-h(@n, @i: 0) when (@i =< @n) {
+  .h@{i} {
+	  height: @i + 0px;
+	  flex-shrink: 0;
+  }
+  .gen-h(@n, (@i + 5));
+}
+.hfull {
+	height: 100%;
+}
+/**
+ * 点钟方位表示法
+ */
+.align-0 {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+.align-1,
+.align-2 {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+	justify-content: flex-start;
+}
+.align-3 {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+	justify-content: center;
+}
+.align-4,
+.align-5 {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+	justify-content: flex-end;
+}
+.align-6 {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: flex-end;
+}
+.align-7,
+.align-8 {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: flex-end;
+}
+.align-9 {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: center;
+}
+.align-10,
+.align-11 {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: flex-start;
+}
+.align-12 {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: flex-start;
+}
+/** 内边距 */
+.gen-p(30);
+.gen-p(@n, @i: 0) when (@i =< @n) {
+  .p@{i} {
+	  padding: @i + 0px;
+	  box-sizing: border-box;
+  }
+  .gen-p(@n, (@i + 5));
+}
+.p0-top{
+	padding-top: 0px;
+	box-sizing: border-box;
+}
+.p0-bottom{
+	padding-bottom: 0px;
+	box-sizing: border-box;
+}
+.p0-left{
+	padding-left: 0px;
+	box-sizing: border-box;
+}
+.p0-right{
+	padding-right: 0px;
+	box-sizing: border-box;
+}
+/** 外边距 */
+.gen-m(30);
+.gen-m(@n, @i: 0) when (@i =< @n) {
+  .m@{i} {
+	  margin: @i + 5px;
+  }
+  .gen-m(@n, (@i + 5));
+}
+
+.gen-m-outer(30);
+.gen-m-outer(@n, @i: 0) when (@i =< @n) {
+  .m@{i}-bottom{
+	  margin-bottom: @i + 5px;
+  }
+  .m@{i}-left{
+	  margin-left: @i + 5px;
+  }
+  .m@{i}-top{
+	  margin-top: @i + 5px;
+  }
+  .m@{i}-right{
+	  margin-right: @i + 5px;
+  }
+  .gen-m-outer(@n, (@i + 5));
+}
+
+
+
+/** 字体大小 */
+.gen-f(36);
+.gen-f(@n, @i: 0) when (@i =< @n) {
+  .f@{i} {
+	  font-size: @i + 0px;
+	  line-height: @i + 5px;
+  }
+  .gen-f(@n, (@i + 2));
+}
